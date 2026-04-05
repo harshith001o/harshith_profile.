@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harshith Reddy | Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+ 
+  <style>
+    :root {
+      --primary: #5c6bc0;
+      --primary-dark: #3f51b5;
+      --accent: #ff7043;
+      --bg-light: #f8f9ff;
+      --card-shadow: 0 8px 30px rgba(92,107,192,0.12);
+    }
+ 
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg-light);
+      color: #333;
+      padding-top: 70px;
+    }
+ 
+    /* PAGE SECTIONS */
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+ 
+    /* NAVBAR */
+    .navbar {
+      background: linear-gradient(90deg, #3f51b5, #5c6bc0) !important;
+      box-shadow: 0 2px 12px rgba(63,81,181,0.3);
+    }
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+    }
+    .nav-link { font-weight: 500; cursor: pointer; }
+    .nav-link.active { border-bottom: 2px solid #ff7043; }
+ 
+    /* HERO */
+    .hero-section {
+      background: linear-gradient(135deg, #3f51b5 0%, #5c6bc0 50%, #7986cb 100%);
+      color: #fff;
+      padding: 90px 0 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      top: -150px; right: -100px;
+    }
+    .hero-section h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+    }
+    .hero-mini {
+      background: linear-gradient(135deg, #3f51b5, #5c6bc0);
+      color: #fff;
+      padding: 50px 0 40px;
+    }
+    .hero-mini h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; }
+ 
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--primary-dark);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 60px; height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin-top: 6px;
+    }
+ 
+    /* CARDS */
+    .card {
+      border: none;
+      border-radius: 14px;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(92,107,192,0.2);
+    }
+    .card-header { border-radius: 14px 14px 0 0 !important; }
+ 
+    /* PROGRESS */
+    .progress { border-radius: 20px; height: 12px; background: #e8eaf6; }
+    .progress-bar { border-radius: 20px; background: linear-gradient(90deg, #5c6bc0, #7986cb); transition: width 1.2s ease; }
+ 
+    /* BUTTONS */
+    .btn-primary { background: var(--primary); border-color: var(--primary); border-radius: 8px; font-weight: 600; padding: 10px 24px; transition: all 0.2s; }
+    .btn-primary:hover { background: var(--primary-dark); border-color: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline-primary { border-color: var(--primary); color: var(--primary); border-radius: 8px; font-weight: 600; padding: 10px 24px; }
+    .btn-outline-primary:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+ 
+    /* TABLE */
+    .table thead th { background: #5c6bc0; color: #fff; }
+ 
+    /* ACCORDION */
+    .accordion-button:not(.collapsed) { background: #e8eaf6; color: var(--primary-dark); }
+ 
+    /* LIST GROUP */
+    .list-group-item { border-left: 4px solid var(--primary); margin-bottom: 6px; border-radius: 6px !important; }
+ 
+    /* FORM */
+    .form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 0.2rem rgba(92,107,192,0.25); }
+    .form-label { font-weight: 500; }
+ 
+    /* CAROUSEL */
+    .carousel-item { background: linear-gradient(135deg, #e8eaf6, #fce4ec); min-height: 200px; border-radius: 14px; }
+ 
+    /* PROFILE IMG */
+    .profile-img-wrapper {
+      display: inline-block;
+      padding: 6px;
+      background: linear-gradient(135deg, #5c6bc0, #ff7043);
+      border-radius: 50%;
+    }
+    .profile-img-wrapper img { border: 4px solid #fff; width: 150px; height: 150px; object-fit: cover; }
+ 
+    /* MODAL */
+    .modal-header { background: linear-gradient(90deg, #3f51b5, #5c6bc0); color: #fff; }
+    .modal-header .btn-close { filter: invert(1); }
+ 
+    /* ALERT */
+    .alert-info { background: #e8eaf6; border-color: #9fa8da; color: #3f51b5; }
+ 
+    /* FOOTER */
+    footer {
+      background: linear-gradient(90deg, #3f51b5, #5c6bc0);
+      color: rgba(255,255,255,0.85);
+      padding: 24px 0;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+ 
+<!-- ══════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#" onclick="showPage('home')"><i class="bi bi-code-slash me-2"></i>Harshith</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" id="nav-home" onclick="showPage('home')">Home</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav-about" onclick="showPage('about')">About</a></li>
+        <li class="nav-item"><a class="nav-link" id="nav-qualifications" onclick="showPage('qualifications')">Qualifications</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Skills & Certs</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" onclick="showPage('skills')"><i class="bi bi-bar-chart me-2"></i>Skills</a></li>
+            <li><a class="dropdown-item" onclick="showPage('certifications')"><i class="bi bi-patch-check me-2"></i>Certifications</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" id="nav-contact" onclick="showPage('contact')">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+ 
+<!-- ══════════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════════ -->
+<div id="page-home" class="page-section active">
+ 
+  <!-- HERO -->
+  <section class="hero-section text-center">
+    <div class="container">
+      <span class="badge bg-warning text-dark mb-3 px-3 py-2">🎓 IT Student @ Vasavi College of Engineering</span>
+      <h1 class="display-4 fw-bold">Harshith Jagathpally Reddy</h1>
+      <p class="lead mt-3 mb-4">Aspiring Developer · Problem Solver · Lifelong Learner</p>
+      <div class="d-flex justify-content-center gap-3 flex-wrap">
+        <button class="btn btn-light btn-lg fw-bold px-4" onclick="showPage('about')">Know Me Better</button>
+        <button class="btn btn-outline-light btn-lg px-4" onclick="showPage('contact')">Get In Touch</button>
+      </div>
+    </div>
+  </section>
+ 
+  <div class="container mt-4">
+    <!-- ALERT -->
+    <div class="alert alert-info alert-dismissible fade show d-flex align-items-center" role="alert">
+      <i class="bi bi-info-circle-fill me-2 fs-5"></i>
+      <div>Welcome to my portfolio! I'm actively looking for internship and project opportunities. Let's connect!</div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+ 
+    <!-- CAROUSEL -->
+    <h2 class="section-title mb-4 mt-4">Highlights</h2>
+    <div id="heroCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+      </div>
+      <div class="carousel-inner rounded-4">
+        <div class="carousel-item active text-center p-5">
+          <i class="bi bi-code-slash display-1 text-primary"></i>
+          <h4 class="mt-3 fw-bold">Programming Enthusiast</h4>
+          <p class="text-muted">Skilled in C, C++, and Python — solving real problems with code.</p>
+        </div>
+        <div class="carousel-item text-center p-5">
+          <i class="bi bi-trophy display-1 text-warning"></i>
+          <h4 class="mt-3 fw-bold">LeetCode & HackerRank</h4>
+          <p class="text-muted">Consistently practising data structures and algorithm challenges.</p>
+        </div>
+        <div class="carousel-item text-center p-5">
+          <i class="bi bi-globe display-1 text-success"></i>
+          <h4 class="mt-3 fw-bold">Web Development</h4>
+          <p class="text-muted">Building responsive, modern web interfaces with HTML, CSS & Bootstrap.</p>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+      </button>
+    </div>
+ 
+    <!-- QUICK STATS -->
+    <h2 class="section-title mb-4">At a Glance</h2>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-4">
+          <i class="bi bi-laptop display-4 text-primary mb-3"></i>
+          <h5 class="fw-bold">5+ Technologies</h5>
+          <p class="text-muted mb-0">Hands-on experience with C, C++, Python, HTML & CSS.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-4">
+          <i class="bi bi-puzzle display-4 text-warning mb-3"></i>
+          <h5 class="fw-bold">Problem Solver</h5>
+          <p class="text-muted mb-0">Active on LeetCode & HackerRank, sharpening logic daily.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-4">
+          <i class="bi bi-mortarboard display-4 text-success mb-3"></i>
+          <h5 class="fw-bold">Expected 2028</h5>
+          <p class="text-muted mb-0">B.E. Information Technology — Vasavi College of Engineering.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     PAGE: ABOUT
+══════════════════════════════════════════ -->
+<div id="page-about" class="page-section">
+  <section class="hero-mini text-center">
+    <div class="container">
+      <h1>About Me</h1>
+      <p class="lead opacity-90 mt-1">Get to know the person behind the code</p>
+    </div>
+  </section>
+ 
+  <div class="container py-5">
+    <div class="row g-5 align-items-center">
+      <!-- PROFILE CARD -->
+      <div class="col-lg-4 text-center">
+        <div class="card p-4">
+          <div class="d-flex justify-content-center mb-3">
+            <div class="profile-img-wrapper">
+              <img src="https://ui-avatars.com/api/?name=Harshith+Reddy&size=160&background=5c6bc0&color=fff&bold=true" class="rounded-circle" alt="Harshith">
+            </div>
+          </div>
+          <h4 class="fw-bold mb-1">Harshith Jagathpally Reddy</h4>
+          <p class="text-muted mb-3">IT Student · Developer</p>
+          <div class="d-flex justify-content-center gap-2 flex-wrap mb-3">
+            <span class="badge bg-primary px-3 py-2">C / C++</span>
+            <span class="badge bg-info text-dark px-3 py-2">Python</span>
+            <span class="badge bg-success px-3 py-2">HTML/CSS</span>
+          </div>
+          <button class="btn btn-primary w-100" onclick="showPage('contact')"><i class="bi bi-envelope me-2"></i>Contact Me</button>
+        </div>
+      </div>
+ 
+      <!-- ABOUT CONTENT -->
+      <div class="col-lg-8">
+        <h2 class="section-title mb-4">Who Am I?</h2>
+        <p class="fs-5 mb-4">I am a motivated and detail-oriented Information Technology student at Vasavi College of Engineering. I have a strong interest in learning and applying new technologies, and I enjoy problem-solving and continuous skill development.</p>
+ 
+        <div class="accordion" id="aboutAccordion">
+          <div class="accordion-item mb-2 border-0 rounded-3 overflow-hidden shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#acc1">
+                <i class="bi bi-person-circle me-2 text-primary"></i> My Mission
+              </button>
+            </h2>
+            <div id="acc1" class="accordion-collapse collapse show" data-bs-parent="#aboutAccordion">
+              <div class="accordion-body">I am focused on building practical knowledge and preparing myself for real-world professional challenges. My goal is to become a well-rounded software developer who can contribute meaningfully to impactful projects.</div>
+            </div>
+          </div>
+          <div class="accordion-item mb-2 border-0 rounded-3 overflow-hidden shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#acc2">
+                <i class="bi bi-heart me-2 text-danger"></i> Interests & Hobbies
+              </button>
+            </h2>
+            <div id="acc2" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+              <div class="accordion-body">I enjoy competitive programming, exploring open-source projects, participating in technical workshops, and keeping up with the latest trends in technology and software development.</div>
+            </div>
+          </div>
+          <div class="accordion-item mb-2 border-0 rounded-3 overflow-hidden shadow-sm">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#acc3">
+                <i class="bi bi-bullseye me-2 text-success"></i> Career Goals
+              </button>
+            </h2>
+            <div id="acc3" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+              <div class="accordion-body">I aspire to work at a dynamic tech company where I can grow as a software engineer, contribute to meaningful products, and collaborate with talented teams to solve complex problems.</div>
+            </div>
+          </div>
+        </div>
+ 
+        <!-- QUICK FACTS -->
+        <div class="row g-3 mt-3">
+          <div class="col-6">
+            <div class="card p-3 h-100">
+              <i class="bi bi-geo-alt text-primary fs-4 mb-1"></i>
+              <small class="text-muted">Location</small>
+              <div class="fw-semibold">Hyderabad, India</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card p-3 h-100">
+              <i class="bi bi-mortarboard text-primary fs-4 mb-1"></i>
+              <small class="text-muted">Degree</small>
+              <div class="fw-semibold">B.E. Information Technology</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card p-3 h-100">
+              <i class="bi bi-calendar-check text-primary fs-4 mb-1"></i>
+              <small class="text-muted">Graduation</small>
+              <div class="fw-semibold">2028 (Expected)</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card p-3 h-100">
+              <i class="bi bi-github text-primary fs-4 mb-1"></i>
+              <small class="text-muted">GitHub</small>
+              <div class="fw-semibold"><a href="https://github.com/your-username" target="_blank">your-username</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     PAGE: QUALIFICATIONS
+══════════════════════════════════════════ -->
+<div id="page-qualifications" class="page-section">
+  <section class="hero-mini text-center">
+    <div class="container">
+      <h1>Qualifications</h1>
+      <p class="lead opacity-90 mt-1">My educational journey so far</p>
+    </div>
+  </section>
+ 
+  <div class="container py-5">
+    <div class="alert alert-info d-flex align-items-center mb-4">
+      <i class="bi bi-mortarboard-fill me-2 fs-5"></i>
+      <div>Currently pursuing B.E. in Information Technology — expected graduation in <strong>2028</strong>.</div>
+    </div>
+ 
+    <h2 class="section-title mb-4">Education</h2>
+    <div class="card mb-5">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover mb-0 align-middle">
+            <thead>
+              <tr><th>Institution</th><th>Degree / Level</th><th>Field</th><th>Year</th><th>Status</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Vasavi College of Engineering</strong><br><small class="text-muted">Narsingi, Hyderabad</small></td>
+                <td>Bachelor of Engineering (B.E.)</td><td>Information Technology</td><td>2024 – 2028</td>
+                <td><span class="badge bg-primary">In Progress</span></td>
+              </tr>
+              <tr>
+                <td><strong>Resonance Schooling</strong></td>
+                <td>Intermediate (Class XII)</td><td>MPC</td><td>2022 – 2024</td>
+                <td><span class="badge bg-success">Completed</span></td>
+              </tr>
+              <tr>
+                <td><strong>School</strong></td>
+                <td>Secondary (Class X)</td><td>General</td><td>2022</td>
+                <td><span class="badge bg-success">Completed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+ 
+    <h2 class="section-title mb-4">Achievements</h2>
+    <div class="row g-4 mb-5">
+      <div class="col-md-4">
+        <div class="card h-100 p-4 text-center">
+          <i class="bi bi-trophy-fill display-4 text-warning mb-3"></i>
+          <h5 class="fw-bold">Competitive Coding</h5>
+          <p class="text-muted">Solved problems on LeetCode & HackerRank, strengthening DSA skills.</p>
+          <span class="badge bg-warning text-dark px-3 py-2 me-1">LeetCode</span>
+          <span class="badge bg-success px-3 py-2">HackerRank</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 p-4 text-center">
+          <i class="bi bi-people-fill display-4 text-primary mb-3"></i>
+          <h5 class="fw-bold">Technical Workshops</h5>
+          <p class="text-muted">Participated in technical workshops and coding practice sessions at college.</p>
+          <span class="badge bg-primary px-3 py-2">Workshop Participant</span>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 p-4 text-center">
+          <i class="bi bi-graph-up-arrow display-4 text-success mb-3"></i>
+          <h5 class="fw-bold">Consistent Growth</h5>
+          <p class="text-muted">Demonstrated consistent improvement in problem-solving and technical skills.</p>
+          <span class="badge bg-info text-dark px-3 py-2">Self-Learner</span>
+        </div>
+      </div>
+    </div>
+ 
+    <h2 class="section-title mb-4">Co-curricular Activities</h2>
+    <div class="card">
+      <div class="card-body p-0">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered mb-0 align-middle">
+            <thead><tr><th>#</th><th>Activity</th><th>Platform / Venue</th><th>Badge</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Data Structures Practice</td><td>LeetCode</td><td><span class="badge bg-warning text-dark">Ongoing</span></td></tr>
+              <tr><td>2</td><td>Algorithmic Problem Solving</td><td>HackerRank</td><td><span class="badge bg-success">Active</span></td></tr>
+              <tr><td>3</td><td>Technical Workshops</td><td>Vasavi College of Engineering</td><td><span class="badge bg-primary">Completed</span></td></tr>
+              <tr><td>4</td><td>Online Coursework</td><td>Various Platforms</td><td><span class="badge bg-info text-dark">Ongoing</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     PAGE: SKILLS
+══════════════════════════════════════════ -->
+<div id="page-skills" class="page-section">
+  <section class="hero-mini text-center">
+    <div class="container">
+      <h1>My Skills</h1>
+      <p class="lead opacity-90 mt-1">Technologies and abilities I bring to the table</p>
+    </div>
+  </section>
+ 
+  <div class="container py-5">
+    <div class="row g-5">
+      <!-- PROGRESS BARS -->
+      <div class="col-lg-7">
+        <h2 class="section-title mb-4">Technical Proficiency</h2>
+        <div class="card p-4">
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1"><span class="fw-semibold"><i class="bi bi-filetype-c me-2 text-primary"></i>C Programming</span><span class="text-muted">75%</span></div>
+            <div class="progress"><div class="progress-bar skill-bar" data-width="75%" role="progressbar" style="width:0"></div></div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1"><span class="fw-semibold"><i class="bi bi-braces me-2 text-primary"></i>C++</span><span class="text-muted">70%</span></div>
+            <div class="progress"><div class="progress-bar skill-bar" data-width="70%" role="progressbar" style="width:0"></div></div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1"><span class="fw-semibold"><i class="bi bi-filetype-py me-2 text-warning"></i>Python</span><span class="text-muted">65%</span></div>
+            <div class="progress"><div class="progress-bar skill-bar" data-width="65%" role="progressbar" style="width:0; background:linear-gradient(90deg,#f9a825,#fdd835);"></div></div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1"><span class="fw-semibold"><i class="bi bi-filetype-html me-2 text-danger"></i>HTML</span><span class="text-muted">80%</span></div>
+            <div class="progress"><div class="progress-bar skill-bar" data-width="80%" role="progressbar" style="width:0; background:linear-gradient(90deg,#e53935,#ef9a9a);"></div></div>
+          </div>
+          <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1"><span class="fw-semibold"><i class="bi bi-filetype-css me-2 text-info"></i>CSS</span><span class="text-muted">75%</span></div>
+            <div class="progress"><div class="progress-bar skill-bar" data-width="75%" role="progressbar" style="width:0; background:linear-gradient(90deg,#00897b,#4db6ac);"></div></div>
+          </div>
+          <div class="mb-2">
+            <div class="d-flex justify-content-between mb-1"><span class="fw-semibold"><i class="bi bi-diagram-3 me-2 text-success"></i>DSA</span><span class="text-muted">60%</span></div>
+            <div class="progress"><div class="progress-bar skill-bar" data-width="60%" role="progressbar" style="width:0; background:linear-gradient(90deg,#43a047,#a5d6a7);"></div></div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- SOFT SKILLS -->
+      <div class="col-lg-5">
+        <h2 class="section-title mb-4">Soft Skills</h2>
+        <ul class="list-group mb-4">
+          <li class="list-group-item d-flex align-items-center gap-3"><i class="bi bi-chat-dots-fill text-primary fs-5"></i><span class="fw-semibold">Communication</span><span class="badge bg-primary ms-auto">Strong</span></li>
+          <li class="list-group-item d-flex align-items-center gap-3"><i class="bi bi-people-fill text-success fs-5"></i><span class="fw-semibold">Team Collaboration</span><span class="badge bg-success ms-auto">Strong</span></li>
+          <li class="list-group-item d-flex align-items-center gap-3"><i class="bi bi-lightbulb-fill text-warning fs-5"></i><span class="fw-semibold">Problem Solving</span><span class="badge bg-warning text-dark ms-auto">Developing</span></li>
+          <li class="list-group-item d-flex align-items-center gap-3"><i class="bi bi-clock-fill text-info fs-5"></i><span class="fw-semibold">Time Management</span><span class="badge bg-info text-dark ms-auto">Good</span></li>
+          <li class="list-group-item d-flex align-items-center gap-3"><i class="bi bi-book-fill text-danger fs-5"></i><span class="fw-semibold">Continuous Learning</span><span class="badge bg-danger ms-auto">Strong</span></li>
+          <li class="list-group-item d-flex align-items-center gap-3"><i class="bi bi-check2-circle text-secondary fs-5"></i><span class="fw-semibold">Attention to Detail</span><span class="badge bg-secondary ms-auto">Good</span></li>
+        </ul>
+        <h2 class="section-title mb-3">Tools & Platforms</h2>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="badge bg-dark fs-6 px-3 py-2"><i class="bi bi-github me-1"></i>GitHub</span>
+          <span class="badge bg-primary fs-6 px-3 py-2"><i class="bi bi-code me-1"></i>VS Code</span>
+          <span class="badge bg-warning text-dark fs-6 px-3 py-2"><i class="bi bi-trophy me-1"></i>LeetCode</span>
+          <span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-check-circle me-1"></i>HackerRank</span>
+          <span class="badge bg-info text-dark fs-6 px-3 py-2"><i class="bi bi-terminal me-1"></i>Linux/CLI</span>
+          <span class="badge bg-secondary fs-6 px-3 py-2"><i class="bi bi-bootstrap me-1"></i>Bootstrap</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     PAGE: CERTIFICATIONS
+══════════════════════════════════════════ -->
+<div id="page-certifications" class="page-section">
+  <section class="hero-mini text-center">
+    <div class="container">
+      <h1>Certifications</h1>
+      <p class="lead opacity-90 mt-1">Credentials that validate my learning</p>
+    </div>
+  </section>
+ 
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <span class="badge bg-primary fs-6 me-2 px-4 py-2"><i class="bi bi-patch-check me-1"></i>4+ Certifications</span>
+      <span class="badge bg-success fs-6 me-2 px-4 py-2"><i class="bi bi-globe me-1"></i>Online Platforms</span>
+      <span class="badge bg-warning text-dark fs-6 px-4 py-2"><i class="bi bi-graph-up me-1"></i>Continuously Learning</span>
+    </div>
+ 
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-header bg-primary text-white text-center py-3"><i class="bi bi-braces display-5"></i></div>
+          <div class="card-body text-center">
+            <h5 class="card-title fw-bold">C Programming</h5>
+            <p class="card-text text-muted small">Fundamentals of C: memory management, pointers, arrays.</p>
+            <span class="badge bg-success mb-3">Completed</span><br>
+            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#certModal"
+              data-title="C Programming Certificate"
+              data-desc="Certificate covering C fundamentals, arrays, pointers, structures, and file I/O."
+              data-platform="Online Platform" data-year="2024">
+              <i class="bi bi-eye me-1"></i>Preview
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-header bg-warning text-dark text-center py-3"><i class="bi bi-filetype-py display-5"></i></div>
+          <div class="card-body text-center">
+            <h5 class="card-title fw-bold">Python Basics</h5>
+            <p class="card-text text-muted small">Intro to Python: data types, functions, OOP basics.</p>
+            <span class="badge bg-success mb-3">Completed</span><br>
+            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#certModal"
+              data-title="Python Basics Certificate"
+              data-desc="Certificate covering Python syntax, control flow, functions, and OOP principles."
+              data-platform="Online Platform" data-year="2024">
+              <i class="bi bi-eye me-1"></i>Preview
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-header bg-danger text-white text-center py-3"><i class="bi bi-filetype-html display-5"></i></div>
+          <div class="card-body text-center">
+            <h5 class="card-title fw-bold">HTML & CSS</h5>
+            <p class="card-text text-muted small">Modern responsive web pages using HTML5 and CSS3.</p>
+            <span class="badge bg-success mb-3">Completed</span><br>
+            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#certModal"
+              data-title="HTML & CSS Certificate"
+              data-desc="Certificate covering semantic HTML5, CSS3, flexbox, grid, and responsive design."
+              data-platform="Online Platform" data-year="2025">
+              <i class="bi bi-eye me-1"></i>Preview
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100">
+          <div class="card-header bg-success text-white text-center py-3"><i class="bi bi-diagram-3 display-5"></i></div>
+          <div class="card-body text-center">
+            <h5 class="card-title fw-bold">DSA Fundamentals</h5>
+            <p class="card-text text-muted small">Arrays, linked lists, trees, and sorting algorithms.</p>
+            <span class="badge bg-warning text-dark mb-3">In Progress</span><br>
+            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#certModal"
+              data-title="DSA Fundamentals"
+              data-desc="Course covering arrays, linked lists, stacks, queues, trees and sorting algorithms."
+              data-platform="Online Platform" data-year="2025 – Present">
+              <i class="bi bi-eye me-1"></i>Preview
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="alert alert-info mt-5 d-flex gap-2 align-items-center">
+      <i class="bi bi-info-circle-fill fs-5"></i>
+      <span>Certificate links will be updated after GitHub deployment. Replace placeholder links with actual certificate URLs.</span>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     PAGE: CONTACT
+══════════════════════════════════════════ -->
+<div id="page-contact" class="page-section">
+  <section class="hero-mini text-center">
+    <div class="container">
+      <h1>Contact Me</h1>
+      <p class="lead opacity-90 mt-1">I'd love to hear from you — let's connect!</p>
+    </div>
+  </section>
+ 
+  <div class="container py-5">
+    <div class="row g-5">
+      <!-- CONTACT INFO -->
+      <div class="col-lg-4">
+        <h2 class="section-title mb-4">Get In Touch</h2>
+        <p class="text-muted mb-4">Whether it's a project, internship opportunity, or just a hello — feel free to drop a message!</p>
+        <div class="card p-4 mb-3">
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-primary bg-opacity-10 p-3"><i class="bi bi-envelope-fill text-primary fs-5"></i></div>
+            <div><small class="text-muted d-block">Email</small><a href="mailto:harshithjagathgpally@gmail.com" class="fw-semibold text-decoration-none">harshithjagathgpally@gmail.com</a></div>
+          </div>
+        </div>
+        <div class="card p-4 mb-3">
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-success bg-opacity-10 p-3"><i class="bi bi-telephone-fill text-success fs-5"></i></div>
+            <div><small class="text-muted d-block">Phone</small><span class="fw-semibold">+91 7842285062</span></div>
+          </div>
+        </div>
+        <div class="card p-4 mb-3">
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-dark bg-opacity-10 p-3"><i class="bi bi-github text-dark fs-5"></i></div>
+            <div><small class="text-muted d-block">GitHub</small><a href="https://github.com/your-username" target="_blank" class="fw-semibold text-decoration-none">github.com/your-username</a></div>
+          </div>
+        </div>
+        <div class="card p-4">
+          <div class="d-flex align-items-center gap-3">
+            <div class="rounded-circle bg-primary bg-opacity-10 p-3"><i class="bi bi-geo-alt-fill text-primary fs-5"></i></div>
+            <div><small class="text-muted d-block">Location</small><span class="fw-semibold">Hyderabad, Telangana, India</span></div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- FORM -->
+      <div class="col-lg-8">
+        <div class="card p-4 p-md-5">
+          <h4 class="fw-bold mb-4"><i class="bi bi-send me-2 text-primary"></i>Send a Message</h4>
+          <form id="contactForm" onsubmit="return validateContact()" novalidate>
+            <div class="row g-3 mb-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-person"></i></span>
+                  <input type="text" class="form-control" id="name" placeholder="Your full name" required>
+                  <div class="invalid-feedback">Please enter your full name.</div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                  <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                <input type="tel" class="form-control" id="phone" placeholder="10-digit mobile number" maxlength="10" required>
+                <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-chat-dots"></i></span>
+                <input type="text" class="form-control" id="subject" placeholder="What's this about?">
+              </div>
+            </div>
+            <div class="mb-4">
+              <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+              <textarea class="form-control" id="message" rows="5" placeholder="Write your message here..." required></textarea>
+              <div class="invalid-feedback">Please enter a message.</div>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-send me-2"></i>Send Message</button>
+            </div>
+            <div id="form-feedback" class="mt-2"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     CERTIFICATION MODAL
+══════════════════════════════════════════ -->
+<div class="modal fade" id="certModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalTitle">Certificate Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body text-center p-4">
+        <div class="bg-light rounded-3 p-5 mb-4 border">
+          <i class="bi bi-patch-check-fill display-1 text-primary mb-3 d-block"></i>
+          <h4 class="fw-bold" id="modalCertTitle">Certificate Title</h4>
+          <p class="text-muted" id="modalCertDesc">Description goes here.</p>
+          <div class="d-flex justify-content-center gap-3 flex-wrap mt-3">
+            <span class="badge bg-primary px-3 py-2"><i class="bi bi-building me-1"></i><span id="modalPlatform">Platform</span></span>
+            <span class="badge bg-secondary px-3 py-2"><i class="bi bi-calendar me-1"></i><span id="modalYear">Year</span></span>
+          </div>
+        </div>
+        <p class="text-muted small">Issued to: <strong>Harshith Jagathpally Reddy</strong></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <a href="#" class="btn btn-primary"><i class="bi bi-box-arrow-up-right me-1"></i>View Certificate</a>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="container text-center">
+    <p class="mb-1">©️ 2026 Harshith Jagathpally Reddy &nbsp;|&nbsp;
+      <a href="https://github.com/your-username" class="text-white" target="_blank"><i class="bi bi-github me-1"></i>GitHub</a>
+    </p>
+    <p class="mb-0 opacity-75 small">Built with Bootstrap 5</p>
+  </div>
+</footer>
+ 
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ── PAGE NAVIGATION ──
+  const pages = ['home','about','qualifications','skills','certifications','contact'];
+ 
+  function showPage(id) {
+    pages.forEach(p => {
+      document.getElementById('page-' + p).classList.remove('active');
+      const navEl = document.getElementById('nav-' + p);
+      if (navEl) navEl.classList.remove('active');
+    });
+    document.getElementById('page-' + id).classList.add('active');
+    const navEl = document.getElementById('nav-' + id);
+    if (navEl) navEl.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+ 
+    // Animate progress bars when skills page opens
+    if (id === 'skills') {
+      setTimeout(() => {
+        document.querySelectorAll('.skill-bar').forEach(bar => {
+          bar.style.width = bar.getAttribute('data-width');
+        });
+      }, 100);
+    }
+ 
+    // Close mobile nav if open
+    const navCollapse = document.getElementById('navMenu');
+    if (navCollapse.classList.contains('show')) {
+      new bootstrap.Collapse(navCollapse).hide();
+    }
+  }
+ 
+  // Set home as active on load
+  document.getElementById('nav-home').classList.add('active');
+ 
+  // ── CERT MODAL ──
+  document.getElementById('certModal').addEventListener('show.bs.modal', function(e) {
+    const btn = e.relatedTarget;
+    document.getElementById('modalTitle').textContent = btn.getAttribute('data-title');
+    document.getElementById('modalCertTitle').textContent = btn.getAttribute('data-title');
+    document.getElementById('modalCertDesc').textContent = btn.getAttribute('data-desc');
+    document.getElementById('modalPlatform').textContent = btn.getAttribute('data-platform');
+    document.getElementById('modalYear').textContent = btn.getAttribute('data-year');
+  });
+ 
+  // ── CONTACT FORM VALIDATION ──
+  function validateContact() {
+    const name    = document.getElementById('name');
+    const email   = document.getElementById('email');
+    const phone   = document.getElementById('phone');
+    const message = document.getElementById('message');
+    const feedback = document.getElementById('form-feedback');
+    let valid = true;
+ 
+    [name, email, phone, message].forEach(el => el.classList.remove('is-invalid','is-valid'));
+ 
+    if (!name.value.trim()) { name.classList.add('is-invalid'); valid = false; }
+    else name.classList.add('is-valid');
+ 
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) { email.classList.add('is-invalid'); valid = false; }
+    else email.classList.add('is-valid');
+ 
+    if (!/^\d{10}$/.test(phone.value.trim())) { phone.classList.add('is-invalid'); valid = false; }
+    else phone.classList.add('is-valid');
+ 
+    if (!message.value.trim()) { message.classList.add('is-invalid'); valid = false; }
+    else message.classList.add('is-valid');
+ 
+    if (valid) {
+      feedback.innerHTML = '<div class="alert alert-success mt-3">✅ Message sent successfully! I will get back to you soon.</div>';
+      setTimeout(() => {
+        document.getElementById('contactForm').reset();
+        [name, email, phone, message].forEach(el => el.classList.remove('is-valid'));
+        feedback.innerHTML = '';
+      }, 3000);
+    } else {
+      feedback.innerHTML = '<div class="alert alert-danger mt-3">⚠️ Please fix the errors above and try again.</div>';
+    }
+    return false;
+  }
+</script>
+</body>
+</html>
